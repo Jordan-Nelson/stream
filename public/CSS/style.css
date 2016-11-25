@@ -1,0 +1,102 @@
+#imaginary_container {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.navbar{
+  z-index: 1000;
+  padding: 10px 15px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.navbar-header a img{
+  height: 100px;
+  display: inline-block;
+}
+
+.navbar-brand{
+  font-size: 24px;
+  padding: 10px 15px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+@media (max-width: 370px) {
+  .navbar-brand{
+    font-size: 20px;
+  }
+}
+
+.navbar-nav li a{
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.cbp-af-header-shrink{
+  padding: 3px 15px;
+  opacity: .9;
+}
+
+.cbp-af-header-shrink .navbar-header a img{
+  height: 70px;
+}
+
+.cbp-af-header-shrink .navbar-brand{
+  font-size: 20px;
+}
+
+.no-js #loader {
+  display: none;
+}
+
+.js #loader {
+  display: block;
+  position: absolute;
+  left: 100px;
+  top: 0;
+}
+
+.se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url() center no-repeat #fff;
+}
+
+.stylish-input-group .input-group-addon {
+  background: white;
+}
+
+.stylish-input-group .form-control {
+  border-right: 0;
+  box-shadow: 0 0 0;
+  border-color: #ccc;
+  display: inline;
+}
+
+.stylish-input-group button {
+  border: 0;
+  background: transparent;
+}
+
+.search-bar{
+  padding-top: 40px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0px;
+}
+
+.welcome{
+  padding-bottom: 20px;
+}
+

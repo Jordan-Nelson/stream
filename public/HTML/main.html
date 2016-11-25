@@ -1,0 +1,62 @@
+<div class="container search-bar">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div id="imaginary_container">
+
+        <form name="searchMovie" ng-submit="search(query)">
+          <div class="input-group stylish-input-group">
+            
+            <input type="search" class="form-control" placeholder="Search for a movie" ng-model="query">
+            
+            <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+            </button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container welcome" align="center">Welcome to Stream That Movie. Use the search bar above to find a movie.</div>
+<div class="row movie-collage">
+  <a href="#/category/popular">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h4>Most Popular Movies</h4>
+      <img class="col-xs-15" ng-repeat="result in popular.results" ng-src="{{'https://image.tmdb.org/t/p/w300_and_h450_bestv1/' + result.poster_path}}"/>
+    </div>
+  </a>
+  <a href="#/category/G-rated">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h4>Most Popular Kids Movies</h4>
+      <img class="col-xs-15" ng-repeat="result in gRated.results" ng-src="{{'https://image.tmdb.org/t/p/w300_and_h450_bestv1/' + result.poster_path}}"/>
+    </div>
+  </a>
+  <a href="#/category/comedy">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h4>Most Popular Comedies</h4>
+      <img class="col-xs-15" ng-repeat="result in comedy.results" ng-src="{{'https://image.tmdb.org/t/p/w300_and_h450_bestv1/' + result.poster_path}}"/>
+    </div>
+  </a>
+  <a href="#/category/Top-rated">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h4>Top Rated Movies</h4>
+      <img class="col-xs-15" ng-repeat="result in topRated.results" ng-src="{{'https://image.tmdb.org/t/p/w300_and_h450_bestv1/' + result.poster_path}}"/>
+    </div>
+  </a>
+  <a href="#/category/Top-2016">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h4>Top Rated from 2016</h4>
+      <img class="col-xs-15" ng-repeat="result in top2016.results" ng-src="{{'https://image.tmdb.org/t/p/w300_and_h450_bestv1/' + result.poster_path}}"/>
+    </div>
+  </a>
+  <a href="#/category/Sci-fi">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h4>Science Fiction Movies</h4>
+      <img class="col-xs-15" ng-repeat="result in sciFi.results" ng-src="{{'https://image.tmdb.org/t/p/w300_and_h450_bestv1/' + result.poster_path}}"/>
+    </div>
+  </a>
+</div>
+
