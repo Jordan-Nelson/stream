@@ -10,6 +10,32 @@
     templateUrl: 'public/HTML/Directives/movieCard.html',
     link: function($scope, element, attrs) {
         
+        $scope.showCover = false;
+
+        $scope.clickPoster = function() {
+            if (window.outerWidth < 1200 && $scope.showCover === false) {
+                $scope.showCover = true;
+            }
+        }
+
+        $scope.hoverPoster = function() {
+            if (window.outerWidth >= 1200 && $scope.showCover === false) {
+                $scope.showCover = true;
+            }
+        }
+
+        $scope.clickCover = function() {
+            if (window.outerWidth < 1200 && $scope.showCover === true) {
+                $scope.showCover = false;
+            }
+        }
+
+        $scope.unhoverCover = function() {
+            if (window.outerWidth >= 1200 && $scope.showCover === true) {
+                $scope.showCover = false;
+            }
+        }
+
         $scope.findSimilarMovies = function(id) {
             $location.path("/similar/" + id);
         };
@@ -28,7 +54,7 @@
             if (typeof $rootScope.userAccount === 'undefined') {
                 $('#gridSystemModal').modal('show')
             } else {
-                rateMovie.rateMovie(result.id, rating, email).then(function(data) {
+                rateMovie.rateMovie(result.id, rating, $rootScope.userAccount.email).then(function(data) {
                     if(data !== 'NaN'){
                     result.rateMovie_averageRating = data; 
                     };

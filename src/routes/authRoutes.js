@@ -13,8 +13,6 @@ authRouter.route('/signup')
     .post(function(req, res) {
         var user;
         auth.hash(req.body.password.toLowerCase(), function(err, hashed) {
-            console.log(hashed.hash); // Hashed password
-            console.log(hashed.salt); // Salt
             user = {
                 email: req.body.email.toLowerCase(),
                 salt: hashed.salt,

@@ -1,8 +1,7 @@
-<h5 class="hidden-xl hidden-lg">{{result.title}} ({{result.release_date | date: 'yyyy'}})</h5>
-
 <div class="movie-poster-container">
-<img class="full-width" ng-src="{{'https://image.tmdb.org/t/p/w300_and_h450_bestv1/' + result.poster_path}}">
-<div class="movie-poster-cover">
+<img class="full-width" ng-src="{{'https://image.tmdb.org/t/p/w300_and_h450_bestv1/' + result.poster_path}}" ng-click="clickPoster()" ng-mouseover="hoverPoster()">
+<div ng-show="showCover" ng-mouseleave="unhoverCover()" class="movie-poster-cover">
+    <h3 style="margin:-5px"><span class="hidden-xl hidden-lg glyphicon glyphicon-remove-circle float-right" ng-click="clickCover()"></span></h3>
     <h2>{{result.title}} ({{result.release_date | date: 'yyyy'}})</h2>
     <p>{{result.overview | overview:300}}</p>
     
@@ -23,13 +22,6 @@
     </p>
     <p class="bottom right mouse-change" ng-click="findSimilarMovies(result.id)"><span class="glyphicon glyphicon-search"></span> find similar</p>
 </div>
-</div>
-
-<div class="lower-text">
-<p class="float-left mouse-change" ng-repeat="source in (result.sources.purchase_web_sources) | sourceFilter: ['youtube_purchase']" >
-    <a href="{{source.link}}" target="_blank"><span class="glyphicon glyphicon-film"></span> watch trailer</a>
-</p>
-<p class="float-right mouse-change" ng-click="findSimilarMovies(result.id)"><span class="glyphicon glyphicon-search"></span> find similar</p>
 </div>
 
 <div class="row streaming-sources-container">

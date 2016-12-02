@@ -1,5 +1,5 @@
 var passport = require('passport');
-var LocalStrategy = require('passport-Local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var MongoClient = require('mongodb').MongoClient;
 var auth = require('passport-local-authenticate');
 
@@ -20,6 +20,7 @@ module.exports = function () {
                 auth.hash(password, function(err, hashed) {
                     auth.verify(password, {hash: results.hash, salt: results.salt}, function(err, verified) {
                         if (err) {
+                            done(null, false, {message: 'Invalid Password'})
                             console.log(err)
                         }
                         if (verified) {
