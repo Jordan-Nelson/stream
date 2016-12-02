@@ -1,0 +1,43 @@
+<form id="signupForm" class="form-horizontal" action='/auth/signup' method="post">
+  <fieldset>
+    <div id="legend">
+      <legend class="">Create Account</legend>
+      <p ng-if="signupFailure" style="color:red">{{signupFailure}}</p>
+      <p ng-if="signupError" style="color:red">{{signupError}}</p>
+    </div>
+ 
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="email">E-mail</label>
+      <div class="controls">
+        <input required type="text" id="email" name="email" placeholder="" class="input-xlarge" ng-model="email">
+        <p class="help-block">Your Email Address will become your username</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <input required type="password" id="password" name="password" placeholder="" class="input-xlarge" ng-model="password">
+        <p class="help-block">Your password should be at least 6 characters</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Password -->
+      <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+      <div class="controls">
+        <input required type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge" ng-model="passwordConfirm">
+        <p class="help-block">Please confirm your password</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <input type="button" class="btn btn-success" value="Sign Up" ng-click="validateSignup()">
+      </div>
+    </div>
+  </fieldset>
+</form>

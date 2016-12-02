@@ -87,7 +87,7 @@
     
   };
   
-  var module = angular.module("MovieDB");
+  var module = angular.module("Stream");
   module.factory("tmdb", tmdb);
   
 }());

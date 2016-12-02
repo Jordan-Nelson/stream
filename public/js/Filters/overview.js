@@ -1,4 +1,4 @@
-angular.module('MovieDB')
+angular.module('Stream')
 .filter('overview', function() {
   return function(input, maxLen) {
     input = input || '';

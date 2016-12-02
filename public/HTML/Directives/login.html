@@ -1,0 +1,32 @@
+<form id="signinForm" class="form-horizontal" action='/auth/signin' method="get">
+  <fieldset>
+    <div id="legend">
+      <legend class="">Login</legend>
+      <p ng-if="signinFailure" style="color:red">{{signinFailure}}</p>
+    </div>
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="email">E-mail / Username</label>
+      <div class="controls">
+        <input type="text" id="email" name="email" placeholder="" class="input-xlarge" autofocus ng-model="signinEmail">
+        <p>Email Address used during account creation</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <input type="password" id="password" name="password" placeholder="" class="input-xlarge" ng-model="signinPassword">
+        <p>Forgot password?</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <input type="button" class="btn btn-success" value="Login" ng-click="signIn()">
+      </div>
+    </div>
+  </fieldset>
+</form>

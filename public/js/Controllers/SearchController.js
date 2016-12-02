@@ -1,41 +1,12 @@
 (function() {
 
-  var app = angular.module("MovieDB");
+  var app = angular.module("Stream");
 
-  var SearchController = function($scope, $location, tmdb, guidebox, rateMovie, getIP, $routeParams) {
+  var SearchController = function($scope, $location, tmdb, guidebox, getIP, $routeParams) {
 
     $scope.movieSearch = function(newQuery) {
       tmdb.movieSearch(newQuery.replace("%20", " ")).then(processSearch, onError);
     };
-
-    $scope.findSimilarMovies = function(id) {
-        $location.path("/similar/" + id);
-    };
-
-    $scope.clientIP;
-    var setIP = function() {
-      getIP.getIP().then(function(data) {
-        $scope.clientIP = data.ip;
-      }, onError);
-    }
-    
-
-    var getAverageRating = function(result, id) {
-      rateMovie.getAverageRating(id).then(function(data) {
-        if(data !== 'NaN'){
-          result.rateMovie_averageRating = data; 
-        }
-      }, onError);
-    }
-
-    $scope.rateMovie = function(result, rating, ip) {
-      rateMovie.rateMovie(result.id, rating, ip).then(function(data) {
-        if(data !== 'NaN'){
-          result.rateMovie_averageRating = data; 
-        }
-      }, onError);
-          
-    }
 
     $scope.movieSimilar = function() {
       tmdb.movieSimilar($routeParams.id).then(processSearch, onError);
@@ -50,7 +21,6 @@
       $scope.results = data.results;
       for (i = 0; i < $scope.results.length; i += 1) {
         getSources(i, $scope.results[i].id);
-        getAverageRating($scope.results[i], $scope.results[i].id);
       };
     };
 
@@ -74,9 +44,7 @@
     var onError = function(reason) {
       console.log("Error receiving results");
     };
-    
-    $scope.allSources = ['amazon_prime', 'netflix', 'hulu_plus', 'hbo_now', 'fandor', 'shudder', 'showtime_subscription', 'amazon_buy', 'itunes', 'google_play', 'vudu', 'youtube_purchase', 'cinemanow']
-    
+        
     $scope.greaterThan = function(prop, val){
     return function(item){
       return item[prop] > val;
@@ -107,14 +75,10 @@
     };
     
     window.scrollTo(0, 0);
-    setIP();
-    console.log($scope.clientIP)
-    $(".loading").fadeOut(3000);
+    $(".loading").fadeOut(2500);
 
   };
 
   app.controller("SearchController", SearchController);
-
-
 
 }());

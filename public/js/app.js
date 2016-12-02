@@ -1,6 +1,6 @@
 (function() {
 
-  var app = angular.module("MovieDB", ["ngRoute"]);
+  var app = angular.module("Stream", ['ngRoute', 'ngCookies']);
 
   app.config(function($routeProvider) {
     $routeProvider
@@ -43,6 +43,10 @@
         templateUrl: "public/HTML/search.html",
         controller: "SearchController"
       })
+      .when("/login", {
+        templateUrl: "public/HTML/login.html",
+        controller: "LoginController"
+      })      
       .otherwise({
         redirectTo: "/"
       })

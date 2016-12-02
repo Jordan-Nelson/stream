@@ -1,4 +1,4 @@
-angular.module('MovieDB')
+angular.module('Stream')
 .filter('sourceFilter', function() {
   return function(items, list) {
     var output = [];

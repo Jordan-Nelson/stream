@@ -1,24 +1,32 @@
-<div class="container search-bar">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div id="imaginary_container">
-        <form name="searchMovie" ng-submit="search(query)">
-          <div class="input-group stylish-input-group">
-            <input type="search" class="form-control" placeholder="Search for a movie" ng-model="query">
-            <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-            </button>
-            </span>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+<search-bar> </search-bar>
 
 <div class="loading">
   <img src="public/img/loading.gif">
+</div>
+
+<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridModalLabel">Please log in to rate a movie</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid bd-example-row">
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4"><login></login></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4"><signup></signup></div>
+            <div class="col-sm-1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="no-results" ng-show="resp.total_results === 0">
@@ -26,45 +34,6 @@
 </div>
 <div class="row results">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="result in results | filter: {poster_path: ''} | filter: {title: ''} | filter: {release_date: ''} | filter: greaterThan('vote_count', 10)" >
-    <h5 class="hidden-xl hidden-lg">{{result.title}} ({{result.release_date | date: 'yyyy'}})</h5>
-    
-    <div class="movie-poster-container">
-      <img class="full-width" ng-src="{{'https://image.tmdb.org/t/p/w300_and_h450_bestv1/' + result.poster_path}}">
-      <div class="movie-poster-cover">
-        <h2>{{result.title}} ({{result.release_date | date: 'yyyy'}})</h2>
-        <p>{{result.overview | overview:300}}</p>
-        
-        <div class="bottom full-width" style="padding-bottom:40px">
-         Rate Movie
-          <div class="rating mouse-change">
-            <span ng-click="rateMovie(result, 5, clientIP)">☆</span>
-            <span ng-click="rateMovie(result, 4, clientIP)">☆</span>
-            <span ng-click="rateMovie(result, 3, clientIP)">☆</span>
-            <span ng-click="rateMovie(result, 2, clientIP)">☆</span>
-            <span ng-click="rateMovie(result, 1, clientIP)">☆</span>
-            <p ng-if="result.rateMovie_averageRating > 0">Average Rating: {{result.rateMovie_averageRating | number: 1}} / 5 Stars</p>
-          </div>
-        </div>
-
-
-        <p class="bottom left mouse-change" ng-repeat="source in (result.sources.purchase_web_sources) | sourceFilter: ['youtube_purchase']" >
-          <a href="{{source.link}}" target="_blank"><span class="glyphicon glyphicon-film"></span> watch trailer</a>
-        </p>
-        <p class="bottom right mouse-change" ng-click="findSimilarMovies(result.id)"><span class="glyphicon glyphicon-search"></span> find similar</p>
-      </div>
-    </div>
-    
-    <div class="lower-text">
-      <p class="float-left mouse-change" ng-repeat="source in (result.sources.purchase_web_sources) | sourceFilter: ['youtube_purchase']" >
-          <a href="{{source.link}}" target="_blank"><span class="glyphicon glyphicon-film"></span> watch trailer</a>
-      </p>
-      <p class="float-right mouse-change" ng-click="findSimilarMovies(result.id)"><span class="glyphicon glyphicon-search"></span> find similar</p>
-    </div>
-    
-    <div class="row streaming-sources-container">
-      <a class="col-xs-3 col-sm-3 col-md-3 col-lg-3" href="{{source.link}}" ng-repeat="source in (result.sources.subscription_web_sources) | sourceFilter: allSources" target="_blank"><img ng-src="{{('public/img/' + source.source + '_m_img.jpg')}}"></a>
-      <a class="col-xs-3 col-sm-3 col-md-3 col-lg-3" href="{{source.link}}" ng-repeat="source in (result.sources.purchase_web_sources) | sourceFilter: allSources" target="_blank"><img ng-src="{{('public/img/' + source.source + '_m_img.jpg')}}"></a>
-    </div>
-    
+    <movie-card result="result" email="user.email"> </movie-card>  
   </div>
 </div>

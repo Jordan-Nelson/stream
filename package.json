@@ -10,7 +10,13 @@
   "author": "",
   "license": "BSD-2-Clause",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "express": "~4.14.0",
-    "mongodb": "~2.2.11"
+    "express-session": "^1.14.2",
+    "mongodb": "~2.2.11",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-authenticate": "^1.2.0"
   }
 }

@@ -1,8 +1,8 @@
 (function() {
 
-  var app = angular.module("MovieDB");
+  var app = angular.module("Stream");
 
-  var MainController = function($scope, $location, $routeParams, tmdb) {
+  var MainController = function($scope, $location, $routeParams, tmdb, auth) {
 
     $scope.search = function(query) {
 
@@ -35,7 +35,5 @@
   };
 
   app.controller("MainController", MainController);
-
-
 
 }());
