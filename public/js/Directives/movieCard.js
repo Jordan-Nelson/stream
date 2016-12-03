@@ -61,6 +61,12 @@
                 }, onError);   
             }
         };
+
+        $scope.rateMovieTouch = function(result, rating) {
+            if (window.outerWidth < 1200) {
+                $scope.rateMovie(result, rating);
+            }
+        }
             
         var onError = function(reason) {
             console.log("Error receiving results");

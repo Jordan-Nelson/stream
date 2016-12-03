@@ -8,11 +8,11 @@
     <div class="bottom full-width" style="padding-bottom:40px">
     Rate Movie
     <div class="rating mouse-change">
-        <span ng-click="rateMovie(result, 5)">☆</span>
-        <span ng-click="rateMovie(result, 4)">☆</span>
-        <span ng-click="rateMovie(result, 3)">☆</span>
-        <span ng-click="rateMovie(result, 2)">☆</span>
-        <span ng-click="rateMovie(result, 1)">☆</span>
+        <span ng-click="rateMovie(result, 5)" ng-mouseover="rateMovieTouch(result, 5)">☆</span>
+        <span ng-click="rateMovie(result, 4)" ng-mouseover="rateMovieTouch(result, 5)">☆</span>
+        <span ng-click="rateMovie(result, 3)" ng-mouseover="rateMovieTouch(result, 5)">☆</span>
+        <span ng-click="rateMovie(result, 2)" ng-mouseover="rateMovieTouch(result, 5)">☆</span>
+        <span ng-click="rateMovie(result, 1)" ng-mouseover="rateMovieTouch(result, 5)">☆</span>
     </div>
 
     <p ng-if="result.rateMovie_averageRating > 0">Average Rating: {{result.rateMovie_averageRating | number: 1}} / 5 Stars</p>
