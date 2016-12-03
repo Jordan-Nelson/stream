@@ -8,10 +8,10 @@
     Rate Movie
     <div class="rating mouse-change">
         <span ng-click="rateMovie(result, 5); $event.stopPropagation();" ng-mouseover="rateMovieTouch(result, 5); $event.stopPropagation();">☆</span>
-        <span ng-click="rateMovie(result, 4); $event.stopPropagation();" ng-mouseover="rateMovieTouch(result, 5); $event.stopPropagation();">☆</span>
-        <span ng-click="rateMovie(result, 3); $event.stopPropagation();" ng-mouseover="rateMovieTouch(result, 5); $event.stopPropagation();">☆</span>
-        <span ng-click="rateMovie(result, 2); $event.stopPropagation();" ng-mouseover="rateMovieTouch(result, 5); $event.stopPropagation();">☆</span>
-        <span ng-click="rateMovie(result, 1); $event.stopPropagation();" ng-mouseover="rateMovieTouch(result, 5); $event.stopPropagation();">☆</span>
+        <span ng-click="rateMovie(result, 4); $event.stopPropagation();" ng-mouseover="rateMovieTouch(result, 4); $event.stopPropagation();">☆</span>
+        <span ng-click="rateMovie(result, 3); $event.stopPropagation();" ng-mouseover="rateMovieTouch(result, 3); $event.stopPropagation();">☆</span>
+        <span ng-click="rateMovie(result, 2); $event.stopPropagation();" ng-mouseover="rateMovieTouch(result, 2); $event.stopPropagation();">☆</span>
+        <span ng-click="rateMovie(result, 1); $event.stopPropagation();" ng-mouseover="rateMovieTouch(result, 1); $event.stopPropagation();">☆</span>
     </div>
 
     <p ng-if="result.rateMovie_averageRating > 0">Average Rating: {{result.rateMovie_averageRating | number: 1}} / 5 Stars</p>
