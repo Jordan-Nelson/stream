@@ -25,6 +25,7 @@
         }
 
         $scope.clickCover = function() {
+            //$event.stopPropagation();
             if (window.outerWidth < 1200 && $scope.showCover === true) {
                 $scope.showCover = false;
             }
