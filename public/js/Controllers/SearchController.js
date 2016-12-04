@@ -5,6 +5,7 @@
   var SearchController = function($scope, $location, tmdb, guidebox, getIP, $routeParams) {
 
     $scope.movieSearch = function(newQuery) {
+      document.activeElement.blur();
       document.getElementById('search-results').focus()
       tmdb.movieSearch(newQuery.replace("%20", " ")).then(processSearch, onError);
     };
@@ -47,10 +48,10 @@
     };
         
     $scope.greaterThan = function(prop, val){
-    return function(item){
-      return item[prop] > val;
-    }
-}
+      return function(item) {
+        return item[prop] > val;
+      };
+    };
 
     
     if ($location.url().substring(0,8) === "/search/") {
@@ -76,7 +77,7 @@
     };
     
     window.scrollTo(0, 0);
-    $(".loading").fadeOut(2500);
+    $(".loading").fadeOut(2000);
 
   };
 
