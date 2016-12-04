@@ -32,7 +32,7 @@
 <div id="no-results" ng-show="resp.total_results === 0">
   <p>There are no results. Please search for another title.</p>
 </div>
-<div class="row results">
+<div id="search-results" class="row results">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="result in results | filter: {poster_path: ''} | filter: {title: ''} | filter: {release_date: ''} | filter: greaterThan('vote_count', 10)" >
     <movie-card result="result" email="user.email"> </movie-card>  
   </div>
