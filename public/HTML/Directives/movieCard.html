@@ -17,9 +17,9 @@
     <p ng-if="result.rateMovie_averageRating > 0">Average Rating: {{result.rateMovie_averageRating | number: 1}} / 5 Stars</p>
     </div>
     <p class="bottom left mouse-change" ng-repeat="source in (result.sources.purchase_web_sources) | sourceFilter: ['youtube_purchase']" >
-    <a href="{{source.link}}" target="_blank"><span class="glyphicon glyphicon-film"></span> watch trailer</a>
+    <a href="{{source.link}}" target="_blank"><span ng-click="$event.stopPropagation();" class="glyphicon glyphicon-film"></span> watch trailer</a>
     </p>
-    <p class="bottom right mouse-change" ng-click="findSimilarMovies(result.id)"><span class="glyphicon glyphicon-search"></span> find similar</p>
+    <p class="bottom right mouse-change" ng-click="findSimilarMovies(result.id); $event.stopPropagation();"><span class="glyphicon glyphicon-search"></span> find similar</p>
 </div>
 </div>
 

@@ -5,6 +5,7 @@
   var SearchController = function($scope, $location, tmdb, guidebox, getIP, $routeParams) {
 
     $scope.movieSearch = function(newQuery) {
+      document.getElementById('search-results').focus()
       tmdb.movieSearch(newQuery.replace("%20", " ")).then(processSearch, onError);
     };
 
