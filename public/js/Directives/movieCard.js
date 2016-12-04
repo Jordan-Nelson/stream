@@ -14,8 +14,6 @@
 
         $scope.clickPoster = function() {
             if (window.outerWidth < 1200 && $scope.showCover === false) {
-                document.activeElement.blur();
-                document.getElementById('searchQuery').blur();
                 $scope.showCover = true;
             }
         }
