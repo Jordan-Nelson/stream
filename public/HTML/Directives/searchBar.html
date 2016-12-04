@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <div id="imaginary_container">
-        <form name="searchMovie" ng-submit="search(query); document.getElementById('searchQuery').blur();">
+        <form name="searchMovie" ng-submit="search(query); document.getElementById('searchQuery').blur(); document.activeElement.blur();">
           <div class="input-group stylish-input-group">
             <input id="searchQuery" type="search" class="form-control" placeholder="Search for a movie" ng-model="query">
             <span class="input-group-addon">
