@@ -2,40 +2,50 @@
   
   var rateMovie = function($http){
     
-    var getAverageRating = function(movieID){
-      return $http.get("/rating/" + movieID)
+    var getAverageRating = function(movieid){
+      return $http.get('/rating/average/' + movieid)
       .then(function(response){
           return response.data;                     
         });
     };
 
-    var getUserRating = function(movieID, ip){
-      return $http.get("/rating/" + movieID + '/' + ip)
-      .then(function(response){
-          return response.data;                     
+    var getUserRating = function(movieid){
+        return $http.get('/rating/user/' + movieid)
+        .then(function(response){
+            return response.data;                     
         });
     };
 
-    var rateMovie = function(movieID, rating, ip) {
-        return getUserRating(movieID, ip).then(function(response){
+    var rateMovie = function(movieid, rating) {
+
+        return getUserRating(movieid).then(function(response){
             if (response == '') {
-                postRating(movieID, rating, ip);
+                postRating(movieid, rating);
             } else {
-                putRating(movieID, rating, ip);
+                putRating(movieid, rating);
             }
-            return getAverageRating(movieID);
+            return getAverageRating(movieid);
         });
+
     }
     
-    var postRating = function(movieID, rating, ip){
-        return $http.post("/rating/" + movieID + '/' + rating + '/' + ip)
+    var postRating = function(movieid, rating){
+        body = {
+            movieid: movieid,
+            rating: rating
+        }
+        return $http.post('/rating', body)
         .then(function(response){
             return response.data;
         });
     };
 
-    var putRating = function(movieID, rating, ip){
-        return $http.put("/rating/" + movieID + '/' + rating + '/' + ip)
+    var putRating = function(movieid, rating){
+        body = {
+            movieid: movieid,
+            rating: rating
+        }
+        return $http.put('/rating', body)
         .then(function(response){
             return response.data;
         });

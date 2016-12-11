@@ -30,19 +30,6 @@
 }
 
 
-
-/*@media (min-device-width: 1200px) { 
-  .movie-poster-cover:hover {
-    color: white;
-    background-color: black;
-    opacity: .75;
-  }*/
-  
-  .lower-text{
-    visibility: hidden;
-  }
-}
-
 .movie-poster-container p{
   font-size: 14px;
 }

@@ -1,6 +1,6 @@
   var module = angular.module("Stream");
   
-  module.directive('movieCard', function(rateMovie, $location, $rootScope) {
+  module.directive('movieCard', function(rateMovie, $location, auth, favorites) {
   return {
     restrict: 'E',
     scope: {
@@ -25,7 +25,6 @@
         }
 
         $scope.clickCover = function() {
-            //$event.stopPropagation();
             if (window.outerWidth < 1200 && $scope.showCover === true) {
                 $scope.showCover = false;
             }
@@ -51,16 +50,34 @@
 
         $scope.getAverageRating($scope.result, $scope.result.id);
 
-        $scope.rateMovie = function(result, rating) {
-            if (typeof $rootScope.userAccount === 'undefined') {
-                $('#gridSystemModal').modal('show')
-            } else {
-                rateMovie.rateMovie(result.id, rating, $rootScope.userAccount.email).then(function(data) {
-                    if(data !== 'NaN'){
-                    result.rateMovie_averageRating = data; 
+        $scope.getUserRating = function(result, id) {
+            auth.getUser().then(function(res) {
+                if (res === '') {
+                    return;
+                }
+                rateMovie.getUserRating(id, res.email).then(function(data) {
+                    if (data !== 'NaN') {
+                        result.rateMovie_userRating = data; 
                     };
-                }, onError);   
-            }
+                }, onError);
+            });
+
+        };
+
+        $scope.getUserRating($scope.result, $scope.result.id);
+
+        $scope.rateMovie = function(result, rating) {
+            auth.getUser().then(function(res) {
+                if (res === '') {
+                    $('#gridSystemModal').modal('show')
+                } else {
+                    rateMovie.rateMovie(result.id, rating).then(function(data) {
+                        if(data !== 'NaN'){
+                        result.rateMovie_averageRating = data; 
+                        };
+                    }, onError);   
+                }
+            })
         };
 
         $scope.rateMovieTouch = function(result, rating) {
@@ -68,6 +85,50 @@
                 $scope.rateMovie(result, rating);
             }
         }
+
+        $scope.favoriteMovie = function(movie) {
+            auth.getUser().then(function(res) {
+                if (res === '') {
+                    $('#gridSystemModal').modal('show')
+                } else {
+                    favorites.postFavorite(movie).then(function(data) {
+                        $scope.getFavorite(movie);
+                    }, onError);   
+                }
+            })
+        }
+
+        $scope.unfavoriteMovie = function(movie) {
+            auth.getUser().then(function(res) {
+                if (res === '') {
+                    $('#gridSystemModal').modal('show')
+                } else {
+                    favorites.deleteFavorite(movie).then(function(data) {
+                        $scope.getFavorite(movie);
+                    }, onError);   
+                }
+            })
+        }
+
+        $scope.favoriteMovieTouch = function(movie) {
+            if (window.outerWidth < 1200) {
+                $scope.favoriteMovie(movie);
+            }
+        }
+
+        $scope.unfavoriteMovieTouch = function(movie) {
+            if (window.outerWidth < 1200) {
+                $scope.unfavoriteMovie(movie);
+            }
+        }
+
+        $scope.isFavorite;
+        $scope.getFavorite = function(movie) {
+            favorites.isFavorite(movie.id).then(function(data) {
+                $scope.isFavorite = data.isFavorite;
+            }, onError);  
+        }
+        $scope.getFavorite($scope.result);
             
         var onError = function(reason) {
             console.log("Error receiving results");

@@ -1,6 +1,6 @@
 var module = angular.module("Stream");
 
-module.directive('login', ['auth', '$location', '$rootScope', function(auth, $location, $rootScope) {
+module.directive('login', ['auth', '$location', '$route', '$timeout', function(auth, $location, $route, $timeout) {
   return {
     restrict: 'E',
     templateUrl: 'public/HTML/Directives/login.html',
@@ -14,10 +14,10 @@ module.directive('login', ['auth', '$location', '$rootScope', function(auth, $lo
               $location.path('/');
             } else {
               $('#gridSystemModal').modal('hide');
+              $timeout(function () {
+                  $route.reload();
+              }, 200);
             }
-            auth.getUser().then(function(res) {
-              $rootScope.userAccount = res;
-            })
           } else {
             $scope.signinFailure = 'The username and password combination entered was incorrect.'
           }

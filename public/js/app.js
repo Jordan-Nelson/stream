@@ -46,6 +46,10 @@
       .when("/login", {
         templateUrl: "public/HTML/login.html",
         controller: "LoginController"
+      })
+      .when("/user/favorites", {
+        templateUrl: "public/HTML/favorites.html",
+        controller: "SearchController"
       })      
       .otherwise({
         redirectTo: "/"

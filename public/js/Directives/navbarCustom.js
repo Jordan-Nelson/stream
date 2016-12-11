@@ -1,17 +1,16 @@
   var module = angular.module("Stream");
-  module.directive('navbarCustom', ['$rootScope', function($rootScope) {
+  module.directive('navbarCustom', ['auth', function(auth) {
   return {
     restrict: 'E',
     templateUrl: 'public/HTML/Directives/navbarCustom.html',
     link: function($scope, element, attrs) {
 
-      $scope.$watch(function() {
-        return $rootScope.userAccount;
-      }, function() {
-        if(typeof $rootScope.userAccount !== 'undefined') {
-          $scope.userEmail = $rootScope.userAccount.email;
-        }
-      }, true)
+        $scope.$on('$routeChangeSuccess', function () {
+          auth.getUser().then(function(res) {
+            $scope.userEmail = res.email;
+          })
+        });
+        
       }
     }
   }])

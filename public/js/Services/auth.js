@@ -22,6 +22,8 @@
           return response.data;                     
         });
     };
+
+    var reload = false;
     
     return {
       signin: signin,

@@ -10,9 +10,13 @@ module.exports = function() {
         console.log('initializing mongo collections');
         usersCollection = db.collection('users');
         moviesCollection = db.collection('movie-rating');
+        sourcesCollection = db.collection('sources');
+        favoritesCollection = db.collection('favorites')
         return {
             usersCollection: usersCollection,
-            moviesCollection: moviesCollection
+            moviesCollection: moviesCollection,
+            sourcesCollection: sourcesCollection,
+            favoritesCollection: favoritesCollection
         }
     });
 

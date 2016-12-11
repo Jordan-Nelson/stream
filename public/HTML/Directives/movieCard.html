@@ -1,6 +1,14 @@
 <div class="movie-poster-container">
 <img class="full-width" ng-src="{{'https://image.tmdb.org/t/p/w300_and_h450_bestv1/' + result.poster_path}}" ng-click="clickPoster()" ng-mouseover="hoverPoster()">
 <div ng-show="showCover" ng-mouseleave="unhoverCover()" class="movie-poster-cover" ng-click="clickCover()">
+    <h4 class="right mouse-change" style="float:right" ng-if="!isFavorite" 
+        ng-click="favoriteMovie(result); $event.stopPropagation();" ng-mouseover="favoriteMovieTouch(result); $event.stopPropagation();">
+        <span title="Save to Favorites" class="glyphicon glyphicon-heart-empty"></span>
+    </h4>
+    <h4 class="right mouse-change" style="float:right" ng-if="isFavorite" 
+        ng-click="unfavoriteMovie(result); $event.stopPropagation();" ng-mouseover="unfavoriteMovieTouch(result); $event.stopPropagation();">
+        <span title="Remove from Favorites" class="glyphicon glyphicon-heart"></span>
+    </h4>
     <h2>{{result.title}} ({{result.release_date | date: 'yyyy'}})</h2>
     <p>{{result.overview | overview:300}}</p>
     

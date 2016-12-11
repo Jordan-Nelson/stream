@@ -11,10 +11,16 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
-        <li data-toggle="collapse" data-target=".navbar-collapse"><a href="#/">Home</a></li>
-        <li data-toggle="collapse" data-target=".navbar-collapse" ng-if="!userEmail"><a href="#/login" >Login / Sign Up</a></li>
-        <li data-toggle="collapse" data-target=".navbar-collapse"><a href="#/feedback">Provide Feedback</a></li>
-        <li data-toggle="collapse" data-target=".navbar-collapse" ng-if="userEmail"><a href="/auth/logout" >Logout ({{userEmail}})</a></li>
+        <li ><a href="#/">Home</a></li>
+        <li ><a href="#/feedback">Provide Feedback</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ng-if="userEmail"><a href="#/user/favorites">Favorites</a></li>
+            <li ng-if="!userEmail"><a href="#/login" >Login / Sign Up</a></li>
+            <li ng-if="userEmail"><a href="/auth/logout" >Logout ({{userEmail}})</a></li>
+          </ul>
+        </li>
     </ul>
     </div>
 </div>

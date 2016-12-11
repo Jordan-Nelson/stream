@@ -34,6 +34,10 @@ var movieRatingRoute = require('./src/routes/movieRating.js');
 app.use('/rating', movieRatingRoute);
 var authRouter = require('./src/routes/authRoutes.js');
 app.use('/auth', authRouter);
+var sourceRoute = require('./src/routes/sourceRoutes.js');
+app.use('/source', sourceRoute);
+var favoritesRoute = require('./src/routes/favoritesRoutes.js');
+app.use('/favorites', favoritesRoute);
 
 // Listen for requests
 var server = app.listen(app.get('port'), function() {

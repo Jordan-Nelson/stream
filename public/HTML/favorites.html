@@ -1,0 +1,40 @@
+
+<div class="loading">
+  <img src="public/img/loading.gif">
+</div>
+
+<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridModalLabel">Please log in to rate a movie</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid bd-example-row">
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4"><login></login></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4"><signup></signup></div>
+            <div class="col-sm-1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="no-results" ng-show="resp.total_results === 0">
+  <p>There are no results. Please search for another title.</p>
+</div>
+<div id="search-results" class="row results" style="padding-top: 70px">
+    <h3 style="text-align: center; color: #666666">Favorites</h3>
+    <hr>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="result in results | filter: {poster_path: ''} | filter: {title: ''} | filter: {release_date: ''} | filter: greaterThan('vote_count', 10)" >
+    <movie-card result="result" email="user.email"> </movie-card>  
+  </div>
+</div>

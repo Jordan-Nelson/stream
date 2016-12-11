@@ -46,18 +46,6 @@ authRouter.get('/signin', function(req, res, next) {
   })(req, res, next);
 });
 
-authRouter.route('/profile')
-    .all(function(req, res, next) {
-        if(!req.user) {
-            res.redirect('/')
-        } else {
-            next();
-        }
-    })
-    .get(function(req, res){
-        res.json(req.user);
-    });
-
 authRouter.route('/user')
     .get(function(req, res){
         res.json(req.user);

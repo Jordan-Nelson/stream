@@ -2,7 +2,7 @@
 
   var app = angular.module("Stream");
 
-  var SearchController = function($scope, $location, tmdb, guidebox, getIP, $routeParams) {
+  var SearchController = function($scope, $location, tmdb, guidebox, $routeParams, favorites) {
 
     $scope.movieSearch = function(newQuery) {
       tmdb.movieSearch(newQuery.replace("%20", " ")).then(processSearch, onError);
@@ -20,21 +20,12 @@
       $scope.resp = data;
       $scope.results = data.results;
       for (i = 0; i < $scope.results.length; i += 1) {
-        getSources(i, $scope.results[i].id);
+        getStreamingSources(i, $scope.results[i].id);
       };
     };
 
-    var getSources = function(row, tmdbID) {
-      guidebox.getSources(tmdbID).then(function(data) {
-        if (data.id) {
-          $scope.results[row].guideBoxId = data.id;
-          setSources(row, data.id);
-        }
-      }, onError);
-    };
-
-    var setSources = function(row, guideBoxId) {
-      guidebox.setSources(guideBoxId).then(function(data) {
+    var getStreamingSources = function(row, tmdbID) {
+      guidebox.getStreamingSources(tmdbID).then(function(data) {
         if (data) {
           $scope.results[row].sources = data;
         }
@@ -42,7 +33,7 @@
     };
 
     var onError = function(reason) {
-      console.log("Error receiving results");
+      console.log(reason);
     };
         
     $scope.greaterThan = function(prop, val){
@@ -51,14 +42,9 @@
       };
     };
 
-    
     if ($location.url().substring(0,8) === "/search/") {
       $scope.movieSearch($routeParams.query);
     } else if ($location.url().substring(0,9) === "/similar/") {
-      $scope.movieSimilar($routeParams.id);
-    } else if ($location.url().substring(0,15) === "/mobile/search/") {
-      $scope.movieSearch($routeParams.query);
-    } else if ($location.url().substring(0,16) === "/mobile/similar/") {
       $scope.movieSimilar($routeParams.id);
     } else if ($location.url() === "/category/popular") {
       $scope.movieCollage($scope.popular);
@@ -72,6 +58,10 @@
       $scope.movieCollage($scope.top2016);
     } else if ($location.url() === "/category/Sci-fi") {
       $scope.movieCollage($scope.sciFi);
+    } else if ($location.url() === "/user/favorites") {
+      favorites.getFavorites().then(function(response) {
+        processSearch(response);
+      })
     };
     
     window.scrollTo(0, 0);
