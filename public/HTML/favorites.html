@@ -1,9 +1,10 @@
-
-<div class="loading">
+<!--<search-bar> </search-bar>-->
+<div style="height:80px"></div>
+<div ng-show="!pageLoaded" class="loading">
   <img src="public/img/loading.gif">
 </div>
 
-<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+<div ng-show="pageLoaded" id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -31,9 +32,7 @@
 <div id="no-results" ng-show="resp.total_results === 0">
   <p>There are no results. Please search for another title.</p>
 </div>
-<div id="search-results" class="row results" style="padding-top: 70px">
-    <h3 style="text-align: center; color: #666666">Favorites</h3>
-    <hr>
+<div id="search-results" class="row results">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="result in results | filter: {poster_path: ''} | filter: {title: ''} | filter: {release_date: ''} | filter: greaterThan('vote_count', 10)" >
     <movie-card result="result" email="user.email"> </movie-card>  
   </div>

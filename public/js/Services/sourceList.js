@@ -1,0 +1,17 @@
+angular.module("Stream").value('sourceList', 
+    [
+        'amazon_prime', 
+        'netflix', 
+        'hulu_plus', 
+        'hbo_now', 
+        'fandor', 
+        'shudder', 
+        'showtime_subscription', 
+        'amazon_buy', 
+        'itunes', 
+        'google_play', 
+        'vudu', 
+        'youtube_purchase', 
+        'cinemanow'
+    ]
+)

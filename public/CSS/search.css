@@ -23,8 +23,8 @@
   text-align: center;
   padding: 3%;
   z-index: 2;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  /*-webkit-transition: all 0.5s;*/
+  /*transition: all 0.5s;*/
   background-color: black;
   opacity: .75;
 }
@@ -140,7 +140,7 @@ p a:link{
   top: 50%;
 }
 
-.rating {
+/*.rating {
   unicode-bidi: bidi-override;
   direction: rtl;
 }
@@ -153,4 +153,12 @@ p a:link{
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
+}*/
+
+
+.loading {
+  transition: all linear 0.5s;
+}
+.loading.ng-hide {
+  opacity: 0;
 }

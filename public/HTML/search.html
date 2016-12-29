@@ -1,15 +1,16 @@
 <search-bar> </search-bar>
 
-<div class="loading">
+<div ng-show="!pageLoaded" class="loading">
   <img src="public/img/loading.gif">
 </div>
 
-<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+<div ng-show="pageLoaded" id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridModalLabel">Please log in to rate a movie</h4>
+        <h4 class="modal-title" id="gridModalLabel">Login or Sign up</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid bd-example-row">

@@ -1,4 +1,4 @@
-<form id="signupForm" class="form-horizontal" action='/auth/signup' method="post">
+<form ng-submit="validateSignup()" id="signupForm" class="form-horizontal" method="post">
   <fieldset>
     <div id="legend">
       <legend class="">Create Account</legend>
@@ -36,7 +36,7 @@
     <div class="control-group">
       <!-- Button -->
       <div class="controls">
-        <input type="button" class="btn btn-success" value="Sign Up" ng-click="validateSignup()">
+        <input type="submit" class="btn btn-success" value="Sign Up">
       </div>
     </div>
   </fieldset>

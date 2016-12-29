@@ -78,6 +78,8 @@
   box-shadow: 0 0 0;
   border-color: #ccc;
   display: inline;
+  font-size: 18px;
+  height: 44px;
 }
 
 .stylish-input-group button {
@@ -102,3 +104,6 @@
   padding-bottom: 20px;
 }
 
+.glyphicon {
+  font-size:20px
+}

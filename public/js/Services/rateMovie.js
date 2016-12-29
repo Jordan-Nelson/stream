@@ -17,16 +17,13 @@
     };
 
     var rateMovie = function(movieid, rating) {
-
         return getUserRating(movieid).then(function(response){
-            if (response == '') {
+            if (response == '-1') {
                 postRating(movieid, rating);
             } else {
                 putRating(movieid, rating);
             }
-            return getAverageRating(movieid);
         });
-
     }
     
     var postRating = function(movieid, rating){

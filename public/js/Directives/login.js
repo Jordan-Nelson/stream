@@ -15,8 +15,8 @@ module.directive('login', ['auth', '$location', '$route', '$timeout', function(a
             } else {
               $('#gridSystemModal').modal('hide');
               $timeout(function () {
-                  $route.reload();
-              }, 200);
+                $route.reload();
+              }, 350);
             }
           } else {
             $scope.signinFailure = 'The username and password combination entered was incorrect.'

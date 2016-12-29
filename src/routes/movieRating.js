@@ -48,8 +48,12 @@ movieRatingRoute.route('/user/:movieid')
                 movieid: parseInt(req.params.movieid),
                 email: req.user.email
             } 
-            moviesCollection.findOne(document, function(error, documents){
-                res.send(documents);
+            moviesCollection.findOne(document, function(error, document){
+                if (document) {
+                    res.send(document.rating.toString());
+                } else {
+                    res.json(-1);
+                }
             });
         }
     })

@@ -1,6 +1,6 @@
 var module = angular.module("Stream");
 
-module.directive('signup', ['auth', '$location', '$rootScope', function(auth, $location, $rootScope) {
+module.directive('signup', ['auth', '$location', '$route', function(auth, $location, $route) {
   return {
     restrict: 'E',
     templateUrl: 'public/HTML/Directives/signup.html',
@@ -23,10 +23,13 @@ module.directive('signup', ['auth', '$location', '$rootScope', function(auth, $l
                 $location.path('/');
               } else {
                 $('#gridSystemModal').modal('hide');
+                $timeout(function () {
+                  $route.reload();
+              }, 350);
               }
-              auth.getUser().then(function(res) {
-                $rootScope.userAccount = res;
-              })
+              // auth.getUser().then(function(res) {
+              //   $rootScope.userAccount = res;
+              // })
             } else {
               $scope.signupFailure = 'There is already a user with that email address.'
             }

@@ -44,10 +44,12 @@ authRouter.get('/signin', function(req, res, next) {
       return res.json({success: true});
     });
   })(req, res, next);
+  //console.log(res.user)
 });
 
 authRouter.route('/user')
     .get(function(req, res){
+        //console.log(req.user)
         res.json(req.user);
     });
 
