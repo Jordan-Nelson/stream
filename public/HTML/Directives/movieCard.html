@@ -18,23 +18,23 @@
         <div ng-if="!result.rateMovie_averageRating">No user ratings yet</div>
         <span ng-click="rateMovie(result, 1); $event.stopPropagation();">
             <span ng-show="result.rateMovie_userRating < 1" class="glyphicon glyphicon-star-empty"></span>
-            <span ng-show="result.rateMovie_userRating >= 1" class="glyphicon glyphicon-star"></span>
+            <span ng-hide="result.rateMovie_userRating < 1" class="glyphicon glyphicon-star"></span>
         </span>
         <span ng-click="rateMovie(result, 2); $event.stopPropagation();">
             <span ng-show="result.rateMovie_userRating < 2" class="glyphicon glyphicon-star-empty"></span>
-            <span ng-show="result.rateMovie_userRating >= 2" class="glyphicon glyphicon-star"></span>
+            <span ng-hide="result.rateMovie_userRating < 2" class="glyphicon glyphicon-star"></span>
         </span>
         <span ng-click="rateMovie(result, 3); $event.stopPropagation();">
             <span ng-show="result.rateMovie_userRating < 3" class="glyphicon glyphicon-star-empty"></span>
-            <span ng-show="result.rateMovie_userRating >= 3" class="glyphicon glyphicon-star"></span>
+            <span ng-hide="result.rateMovie_userRating < 3" class="glyphicon glyphicon-star"></span>
         </span>
         <span ng-click="rateMovie(result, 4); $event.stopPropagation();">
             <span ng-show="result.rateMovie_userRating < 4" class="glyphicon glyphicon-star-empty"></span>
-            <span ng-show="result.rateMovie_userRating >= 4" class="glyphicon glyphicon-star"></span>
+            <span ng-hide="result.rateMovie_userRating < 4" class="glyphicon glyphicon-star"></span>
         </span>
         <span ng-click="rateMovie(result, 5); $event.stopPropagation();">
             <span ng-show="result.rateMovie_userRating < 5" class="glyphicon glyphicon-star-empty"></span>
-            <span ng-show="result.rateMovie_userRating >= 5" class="glyphicon glyphicon-star"></span>
+            <span ng-hide="result.rateMovie_userRating < 5" class="glyphicon glyphicon-star"></span>
         </span>
 
         </p>

@@ -1,6 +1,6 @@
 (function() {
 
-  var app = angular.module("Stream", ['ngRoute', 'ngCookies', 'ngAnimate', 'ngTouch']);
+  var app = angular.module("Stream", ['ngRoute', 'ngCookies', 'ngTouch']); //, 'ngAnimate'
 
   app.config(function($routeProvider) {
     $routeProvider
