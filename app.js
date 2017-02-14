@@ -9,7 +9,7 @@ var session = require('express-session');
 var app = express(); 
 
 // Define the port for main app
-app.set('port', 8080);
+app.set('port', 3000);
 
 // web app static file route for public folder
 app.use('/public', express.static(path.join(__dirname + '/public')));
